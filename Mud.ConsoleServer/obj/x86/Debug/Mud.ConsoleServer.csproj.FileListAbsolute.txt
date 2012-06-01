@@ -1,0 +1,7 @@
+D:\Projekty\Google.Code\comonlib\Mud\Mud.ConsoleServer\bin\Debug\Mud.ConsoleServer.exe
+D:\Projekty\Google.Code\comonlib\Mud\Mud.ConsoleServer\bin\Debug\Mud.ConsoleServer.pdb
+D:\Projekty\Google.Code\comonlib\Mud\Mud.ConsoleServer\bin\Debug\Mud.Domain.dll
+D:\Projekty\Google.Code\comonlib\Mud\Mud.ConsoleServer\bin\Debug\Mud.Domain.pdb
+D:\Projekty\Google.Code\comonlib\Mud\Mud.ConsoleServer\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Projekty\Google.Code\comonlib\Mud\Mud.ConsoleServer\obj\x86\Debug\Mud.ConsoleServer.exe
+D:\Projekty\Google.Code\comonlib\Mud\Mud.ConsoleServer\obj\x86\Debug\Mud.ConsoleServer.pdb

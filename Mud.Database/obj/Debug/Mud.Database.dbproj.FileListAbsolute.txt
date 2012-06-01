@@ -1,0 +1,8 @@
+D:\Projekty\Google.Code\comonlib\Mud\Mud.Database\sql\debug\Mud_Script.PreDeployment.sql
+D:\Projekty\Google.Code\comonlib\Mud\Mud.Database\sql\debug\Mud_Script.PostDeployment.sql
+D:\Projekty\Google.Code\comonlib\Mud\Mud.Database\sql\debug\Mud_Database.sqlsettings
+D:\Projekty\Google.Code\comonlib\Mud\Mud.Database\sql\debug\Mud_Database.sqldeployment
+D:\Projekty\Google.Code\comonlib\Mud\Mud.Database\sql\debug\Mud_Database.sqlcmdvars
+D:\Projekty\Google.Code\comonlib\Mud\Mud.Database\sql\debug\Mud.Database.deploymanifest
+D:\Projekty\Google.Code\comonlib\Mud\Mud.Database\sql\debug\Mud.Database.dbschema
+D:\Projekty\Google.Code\comonlib\Mud\Mud.Database\obj\Debug\Mud.Database.dbschema
