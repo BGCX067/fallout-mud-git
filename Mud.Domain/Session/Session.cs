@@ -36,7 +36,7 @@ namespace Mud.Domain.Session
             this.SendMessage(message, false);
         }
 
-        public void SendMessage(string message,bool isPrompt)
+        public void SendMessage(string message, bool isPrompt)
         {
             _connection.Send(message);
             if (!isPrompt)

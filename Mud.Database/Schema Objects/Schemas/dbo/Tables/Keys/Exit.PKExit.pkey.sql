@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[Exit]
+	ADD CONSTRAINT [PKExit]
+	PRIMARY KEY (Id)

@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[Region]
+	ADD CONSTRAINT [PKRegion]
+	PRIMARY KEY (Id)
