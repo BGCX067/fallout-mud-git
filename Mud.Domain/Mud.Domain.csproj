@@ -46,6 +46,8 @@
     <Compile Include="Command\InputParser.cs" />
     <Compile Include="Connection\Connection.cs" />
     <Compile Include="Connection\ConnectionManager.cs" />
+    <Compile Include="Data\IMapRepository.cs" />
+    <Compile Include="Data\IPlayerRepository.cs" />
     <Compile Include="Delegates\ActionDelegates.cs" />
     <Compile Include="Delegates\ConnectionDelegates.cs" />
     <Compile Include="Enums\Direction.cs" />
