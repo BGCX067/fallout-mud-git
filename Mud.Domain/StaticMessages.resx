@@ -121,7 +121,12 @@
     <value>Podaj nazwe postaci, lub wpisz 'nowy':</value>
   </data>
   <data name="newPlayerStart" xml:space="preserve">
-    <value>---===Tworzenie nowej postaci===---</value>
+    <value>==========================
+=====Tworzenie nowej postaci=====
+==========================</value>
+  </data>
+  <data name="serverShutDown" xml:space="preserve">
+    <value>Serwer został wyłączony. Połączenie przerwane...</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">

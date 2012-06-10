@@ -6,6 +6,8 @@ using Mud.Domain.Abstraction;
 using Mud.Domain.Delegates;
 using Mud.Domain.EventData;
 using Mud.Domain.Session.Context;
+using Mud.Domain.Output;
+using StructureMap;
 
 namespace Mud.Domain.Session
 {
@@ -13,6 +15,7 @@ namespace Mud.Domain.Session
     {
         private IConnection _connection;
         private SessionContext _context;
+        private IOutputParser _outputParser;
 
         public event SessionTerminatedEventHandler OnSessionTerminate;
 
@@ -20,6 +23,7 @@ namespace Mud.Domain.Session
         {
             _connection = con;
             _connection.UserCommand += new UserCommandEventHandler(ConnectionUserCommand);
+            _outputParser = ObjectFactory.GetInstance<IOutputParser>();
             this.SetContext(new StartContext(this));
         }
 
@@ -38,14 +42,14 @@ namespace Mud.Domain.Session
 
         public void SendMessage(string message, bool isPrompt)
         {
-            _connection.Send(message);
+            Flush(message);
             if (!isPrompt)
                 SendPrompt();
         }
 
         public void SendPrompt()
         {
-            _connection.Send(System.Environment.NewLine + GetPrompt());
+            Flush(System.Environment.NewLine + GetPrompt());
         }
 
         private void OnActionRecived()
@@ -75,6 +79,11 @@ namespace Mud.Domain.Session
         private string GetPrompt()
         {
             return _context.GetPrompt();
+        }
+
+        private void Flush(string message)
+        {
+            _connection.Send(_outputParser.Parse("&w" + message));
         }
     }
 }

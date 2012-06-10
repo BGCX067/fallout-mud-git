@@ -70,7 +70,9 @@ namespace Mud.Domain {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ---===Tworzenie nowej postaci===---.
+        ///   Looks up a localized string similar to ==========================
+        ///=====Tworzenie nowej postaci=====
+        ///==========================.
         /// </summary>
         internal static string newPlayerStart {
             get {
@@ -79,21 +81,25 @@ namespace Mud.Domain {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        ///@@@@@@@@@@@@@@@#+##@@@@@@@@@@@@@@@
-        ///@@@@@@@@@@@#,,&apos;++&apos;+:,#@@@@@@@@@@@@
-        ///@@@@@@@@@+,:++++++&apos;++&apos;:&apos;@@@@@@@@@@
-        ///@@@@@@@@@#+++++++++++++;@@@@@@@@@@
-        ///@@@@@@@@@@;++++++++++++@@@@@@@@@@@
-        ///@@@@@@@@@@@+#+++++++++#@@@@@@@@@@@
-        ///@@@@@@@@@@@+:++++++++:@@@@@@@@@@@@
-        ///@@@@@@@@@@@@:+++++++#@@@@@@@@@@@@@
-        ///@@@@@@@@@@@@#+++++++;@@@@@@@@@@@@@
-        ///@@@@@@@@@@@@@:+++++;@@@@@@@@@@@@@@
-        ///@@@@@@@@@@@@@@++++++@@@@@@@@@@@@@@
-        ///@@@@@@@@@@@@@@:#;&apos;;@@@@@@@@@@@@@@@
-        ///@@@@@@@@@@@@@@@@&apos;#@@@@@@@@@@@@@@@@
-        ///@@@@@@@@ [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Serwer został wyłączony. Połączenie przerwane....
+        /// </summary>
+        internal static string serverShutDown {
+            get {
+                return ResourceManager.GetString("serverShutDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  &amp;R           _ ._  _ , _ ._
+        /// &amp;Y         (_ &apos; ( `  )_  .__)
+        /// &amp;Y       ( (  (    )   `)  ) _)
+        /// &amp;R      (__ (_   (_ . _) _) ,__)
+        /// &amp;R          `~~`\ &apos; . /`~~`
+        /// &amp;Y          ,::: ;   ; :::,
+        /// &amp;W         &apos;:::::::::::::::&apos;
+        /// &amp;Y _____________/_ __ \____________
+        /// &amp;W  Welcome to Fallout MUD by Jahol
+        ///.
         /// </summary>
         internal static string splashScreen {
             get {

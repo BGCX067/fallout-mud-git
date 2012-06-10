@@ -69,6 +69,7 @@
     <Compile Include="Model\Region.cs" />
     <Compile Include="Abstraction\Thing.cs" />
     <Compile Include="Model\World.cs" />
+    <Compile Include="Output\IOutputParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session\Context\PlayerCreationContext.cs" />
     <Compile Include="Session\Context\StartContext.cs" />

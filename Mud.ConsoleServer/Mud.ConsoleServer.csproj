@@ -54,6 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mud.Ascii\Mud.Ascii.csproj">
+      <Project>{30E920BB-A9E2-4893-8166-C4AC8FCA9C66}</Project>
+      <Name>Mud.Ascii</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mud.Domain\Mud.Domain.csproj">
       <Project>{1B944EC0-1102-4F44-82EA-68486F006328}</Project>
       <Name>Mud.Domain</Name>

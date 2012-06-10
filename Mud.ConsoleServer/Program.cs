@@ -8,6 +8,8 @@ using Mud.Domain.EventData;
 using StructureMap;
 using Mud.Domain.Data;
 using Mud.Repository;
+using Mud.Domain.Output;
+using Mud.Ascii;
 
 namespace Mud.ConsoleServer
 {
@@ -17,9 +19,9 @@ namespace Mud.ConsoleServer
         {
             ObjectFactory.Initialize(e =>
             {
-
                 e.For<IPlayerRepository>().Use<PlayerRepository>();
                 e.For<IMapRepository>().Use<MapRepository>();
+                e.For<IOutputParser>().Use<AsciiOutputParser>();
             });
             Repo.Initialize();
             ConnectionManager server = new ConnectionManager();
@@ -30,8 +32,8 @@ namespace Mud.ConsoleServer
             while ((input = Console.ReadLine()) != "quit")
             {
                 server.Broadcast(System.Environment.NewLine + input);
-                
             }
+            server.Stop();
         }
 
         static void _server_UserDisconnected(object sender, ConnectionArgs args)

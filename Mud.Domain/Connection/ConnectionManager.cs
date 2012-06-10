@@ -125,7 +125,7 @@ namespace Mud.Domain.Connection
             IList<IConnection> tempConnections = new List<IConnection>(_connections);
             foreach (IConnection conn in tempConnections)
             {
-                conn.Send("Serwer został wyłączony. Połączenie przerwane...");
+                conn.Send(StaticMessages.serverShutDown);
                 conn.Disconnect();
             }
 
