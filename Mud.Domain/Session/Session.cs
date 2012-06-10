@@ -14,6 +14,7 @@ namespace Mud.Domain.Session
         private IConnection _connection;
         private SessionContext _context;
 
+        public event SessionTerminatedEventHandler OnSessionTerminate;
 
         public Session(IConnection con)
         {
@@ -44,11 +45,26 @@ namespace Mud.Domain.Session
         }
 
 
-        public void OnActionRecived()
+        private void OnActionRecived()
         {
             if (ActionRecived != null)
             {
                 ActionRecived(this, new EventArgs());
+            }
+        }
+
+        public void SetContext(SessionContext cont)
+        {
+            _context = null;
+            _context = cont;
+        }
+
+        public void Terminate()
+        {
+            this._connection.Disconnect();
+            if (OnSessionTerminate != null)
+            {
+                OnSessionTerminate(this, new EventArgs());
             }
         }
 

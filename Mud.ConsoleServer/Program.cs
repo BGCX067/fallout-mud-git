@@ -5,6 +5,9 @@ using System.Text;
 using Mud.Domain.Connection;
 using Mud.Domain.Delegates;
 using Mud.Domain.EventData;
+using StructureMap;
+using Mud.Domain.Data;
+using Mud.Repository;
 
 namespace Mud.ConsoleServer
 {
@@ -12,6 +15,13 @@ namespace Mud.ConsoleServer
     {
         static void Main(string[] args)
         {
+            ObjectFactory.Initialize(e =>
+            {
+
+                e.For<IPlayerRepository>().Use<PlayerRepository>();
+                e.For<IMapRepository>().Use<MapRepository>();
+            });
+            Repo.Initialize();
             ConnectionManager server = new ConnectionManager();
             server.UserDisconnected += new UserDisconnectedEventHandler(_server_UserDisconnected);
             server.UserConnected += new UserConnectedEventHandler(_server_UserConnected);

@@ -6,7 +6,7 @@ using System.Data;
 using Mud.Domain.Data;
 using Mud.Domain.Model;
 
-namespace Mud.Repository.Impl
+namespace Mud.Repository
 {
     public class MapRepository : IMapRepository
     {

@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,8 +54,10 @@
     <Compile Include="Connection\ConnectionManager.cs" />
     <Compile Include="Data\IMapRepository.cs" />
     <Compile Include="Data\IPlayerRepository.cs" />
+    <Compile Include="Data\Repo.cs" />
     <Compile Include="Delegates\ActionDelegates.cs" />
     <Compile Include="Delegates\ConnectionDelegates.cs" />
+    <Compile Include="Delegates\SessionDelegates.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="EventData\CommandRecivedArgs.cs" />
     <Compile Include="EventData\ConnectionArgs.cs" />
@@ -62,12 +70,15 @@
     <Compile Include="Abstraction\Thing.cs" />
     <Compile Include="Model\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Session\Context\PlayerCreationContext.cs" />
     <Compile Include="Session\Context\StartContext.cs" />
     <Compile Include="Session\Session.cs" />
     <Compile Include="Session\SessionContext.cs" />
     <Compile Include="Session\SessionManager.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
