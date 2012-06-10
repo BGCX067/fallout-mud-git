@@ -15,5 +15,9 @@ namespace Mud.Domain.Session
         }
 
         public abstract void ProcessCommand(string command);
+
+        public abstract string GetPrompt();
+
+        public abstract void Init();
     }
 }

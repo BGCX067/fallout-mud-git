@@ -7,6 +7,6 @@ namespace Mud.Domain.Data
 {
     public interface IPlayerRepository
     {
-        bool ValidateUser(string name);
+        bool ValidateUserName(string name);
     }
 }

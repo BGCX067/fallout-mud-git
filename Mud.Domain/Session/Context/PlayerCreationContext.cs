@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Mud.Domain.Session.Context
 {
-    public class PlayerCreationContext:SessionContext
+    public class PlayerCreationContext : SessionContext
     {
         private string _playerName;
 
@@ -13,12 +13,22 @@ namespace Mud.Domain.Session.Context
             : base(session)
         {
             _playerName = playerName;
-            _session.SendMessage("Nowa postac:");
+            
         }
 
         public override void ProcessCommand(string command)
         {
-            
+
+        }
+
+        public override string GetPrompt()
+        {
+            return ">";
+        }
+
+        public override void Init()
+        {
+            _session.SendMessage(StaticMessages.newPlayerStart);
         }
     }
 }

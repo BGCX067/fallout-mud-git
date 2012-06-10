@@ -20,14 +20,13 @@ namespace Mud.Domain.Session
         {
             _connection = con;
             _connection.UserCommand += new UserCommandEventHandler(ConnectionUserCommand);
-            _context = new StartContext(this);
+            this.SetContext(new StartContext(this));
         }
 
         private void ConnectionUserCommand(object sender, CommandRecivedArgs args)
         {
             _context.ProcessCommand(args.Command);  
         }
-
 
         public event ActionRecivedEventHandler ActionRecived;
 
@@ -41,9 +40,13 @@ namespace Mud.Domain.Session
         {
             _connection.Send(message);
             if (!isPrompt)
-                _connection.Send(System.Environment.NewLine + GetPrompt());
+                SendPrompt();
         }
 
+        public void SendPrompt()
+        {
+            _connection.Send(System.Environment.NewLine + GetPrompt());
+        }
 
         private void OnActionRecived()
         {
@@ -57,6 +60,7 @@ namespace Mud.Domain.Session
         {
             _context = null;
             _context = cont;
+            _context.Init();
         }
 
         public void Terminate()
@@ -68,10 +72,9 @@ namespace Mud.Domain.Session
             }
         }
 
-
         private string GetPrompt()
         {
-            return "> ";
+            return _context.GetPrompt();
         }
     }
 }

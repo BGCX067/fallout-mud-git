@@ -65,6 +65,15 @@ namespace Mud.Domain.Connection
             }
         }
 
+        public void Broadcast(string message)
+        {
+            IList<IConnection> tempConnections = new List<IConnection>(_connections);
+            foreach (IConnection conn in tempConnections)
+            {
+                conn.Send(message);
+            }
+        }
+
         private void OnClientConnect(IAsyncResult asyncResult)
         {
             try
