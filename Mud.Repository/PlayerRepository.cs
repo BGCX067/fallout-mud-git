@@ -8,8 +8,7 @@ namespace Mud.Repository
 {
     public class PlayerRepository : IPlayerRepository
     {
-
-        public bool ValidateUser(string name)
+        public bool ValidateUserName(string name)
         {
             return false;
         }
