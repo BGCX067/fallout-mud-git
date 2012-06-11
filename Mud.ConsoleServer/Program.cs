@@ -31,7 +31,7 @@ namespace Mud.ConsoleServer
             string input;
             while ((input = Console.ReadLine()) != "quit")
             {
-                server.Broadcast(System.Environment.NewLine + input);
+                server.Broadcast(System.Environment.NewLine + "Admin mowi: " +input);
             }
             server.Stop();
         }

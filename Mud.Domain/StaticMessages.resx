@@ -121,9 +121,9 @@
     <value>Podaj nazwe postaci, lub wpisz 'nowy':</value>
   </data>
   <data name="newPlayerStart" xml:space="preserve">
-    <value>==========================
+    <value>=================================
 =====Tworzenie nowej postaci=====
-==========================</value>
+=================================</value>
   </data>
   <data name="serverShutDown" xml:space="preserve">
     <value>Serwer został wyłączony. Połączenie przerwane...</value>
