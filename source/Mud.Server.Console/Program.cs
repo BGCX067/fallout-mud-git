@@ -16,7 +16,7 @@
             string input;
             while ((input = System.Console.ReadLine()) != "exit")
             {
-                server.Broadcast(input);
+                server.Broadcast(input+"\n\r");
             }
             server.Stop();
         }
