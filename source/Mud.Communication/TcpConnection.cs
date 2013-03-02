@@ -1,6 +1,7 @@
 ﻿namespace Mud.Communication
 {
     using System;
+    using System.Net;
     using System.Net.Sockets;
     using System.Text;
     using System.Threading;
@@ -19,11 +20,15 @@
 
         public event Action<TcpConnection> Disconnected;
 
+        public IPAddress Ip { get; private set; }
+
         public TcpConnection(Socket socket)
         {
             this.socket = socket;
             buffer = new byte[1];
+            var remoteEndPoint = (IPEndPoint)socket.RemoteEndPoint;
             connected = true;
+            this.Ip = remoteEndPoint.Address;
             this.messageBuffer = new MessageBuffer();
             this.messageBuffer.Message += this.OnMessage;
         }
