@@ -1,29 +1,28 @@
 ﻿namespace Mud.Server.Console
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using Mud.Communication;
+    using Mud.Abstractions.Communication;
+    using Mud.Core;
 
-    class Program
+    public class Program
     {
         private static void Main(string[] args)
         {
-            var server = new ConnectionManager(4000);
+            var server = ApplicationServices.ConnectionManager;
             server.UserConnected += ServerUserConnected;
-            server.Start();
+            server.Start(4000);
             string input;
-            while ((input = System.Console.ReadLine()) != "exit")
+            while ((input = Console.ReadLine()) != "exit")
             {
-                server.Broadcast(input+"\n\r");
+                server.Broadcast(input + "\n\r");
             }
+
             server.Stop();
         }
 
-        static void ServerUserConnected(ConnectionManager arg1, TcpConnection arg2)
+        private static void ServerUserConnected(IConnection connection)
         {
-            System.Console.WriteLine(arg2.Ip.ToString());
+            Console.WriteLine(connection.Ip.ToString());
         }
     }
 }

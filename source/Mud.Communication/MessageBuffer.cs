@@ -8,13 +8,13 @@
         public const string NewLineMarker = "\r";
 
         private readonly StringBuilder sb;
-
-        public event Action<string> Message;
-
+        
         public MessageBuffer()
         {
-            sb = new StringBuilder();
+            this.sb = new StringBuilder();
         }
+        
+        public event Action<string> Message;
 
         /// <summary>
         /// Only 1 element array should be passed
@@ -24,18 +24,18 @@
         {
             string input = Encoding.ASCII.GetString(data);
             input = input.Replace("\n", NewLineMarker);
-            sb.Append(input);
+            this.sb.Append(input);
 
             this.CheckMessage();
         }
 
         private void CheckMessage()
         {
-            var buff = sb.ToString();
+            var buff = this.sb.ToString();
             if (buff.Contains(NewLineMarker))
             {
-                this.OnMessage(buff.Replace(NewLineMarker, ""));
-                sb.Clear();
+                this.OnMessage(buff.Replace(NewLineMarker, string.Empty));
+                this.sb.Clear();
             }
         }
 

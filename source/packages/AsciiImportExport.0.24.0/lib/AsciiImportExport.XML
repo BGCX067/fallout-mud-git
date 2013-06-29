@@ -1,0 +1,435 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AsciiImportExport</name>
+    </assembly>
+    <members>
+        <member name="T:AsciiImportExport.ColumnAlignment">
+            <summary>
+            Specifies possible alignments of a columns data
+            </summary>
+        </member>
+        <member name="F:AsciiImportExport.ColumnAlignment.Right">
+            <summary>
+            Align column data to the right side of the column
+            </summary>
+        </member>
+        <member name="F:AsciiImportExport.ColumnAlignment.Left">
+            <summary>
+            Align column data to the left side of the column
+            </summary>
+        </member>
+        <member name="T:AsciiImportExport.ExportException">
+            <summary>
+            This exception carries parsing error information
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.ExportException.#ctor(System.String,System.Object,System.Exception,System.String)">
+            <summary>
+            The constructor
+            </summary>
+            <param name="columnName">The column where the error happend</param>
+            <param name="item">The item that caused the error</param>
+            <param name="ex">The original exception</param>
+            <param name="message">Optional message</param>
+        </member>
+        <member name="P:AsciiImportExport.ExportException.ColumnName">
+            <summary>
+            The column where the error happend
+            </summary>
+        </member>
+        <member name="P:AsciiImportExport.ExportException.Item">
+            <summary>
+            The item that caused the export error
+            </summary>
+        </member>
+        <member name="T:AsciiImportExport.GlobalConfig">
+            <summary>
+            Contains default information for <see cref="T:AsciiImportExport.IDocumentColumn`1"/>
+            </summary>
+        </member>
+        <member name="F:AsciiImportExport.GlobalConfig.DefaultBooleanFalseString">
+            <summary>
+            Default boolean false string (Default = "F")
+            </summary>
+        </member>
+        <member name="F:AsciiImportExport.GlobalConfig.DefaultBooleanTrueString">
+            <summary>
+            Default boolean true string (Default = "T")
+            </summary>
+        </member>
+        <member name="F:AsciiImportExport.GlobalConfig.DefaultDatetimeStringFormat">
+            <summary>
+            Default StringFormat for DateTime (Default = null)
+            </summary>
+        </member>
+        <member name="F:AsciiImportExport.GlobalConfig.DefaultFormatProvider">
+            <summary>
+            Default IFormatProvider (Default = CultureInfo.InvariantCulture)
+            </summary>
+        </member>
+        <member name="F:AsciiImportExport.GlobalConfig.DefaultNumericStringFormat">
+            <summary>
+            Default StringFormat for numeric types (Default = null)
+            </summary>
+        </member>
+        <member name="T:AsciiImportExport.IDocumentFormatDefinition`1">
+            <summary>
+            Holds all the format information necessary to import/export columnbased text data
+            </summary>
+            <typeparam name="T">The type of the POCO you want to import/export</typeparam>
+        </member>
+        <member name="M:AsciiImportExport.IDocumentFormatDefinition`1.Export(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Serializes an enumerable list of the desired type to a string
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.IDocumentFormatDefinition`1.Import(System.IO.TextReader,System.Int32)">
+            <summary>
+            Deserializes a string to a list of the desired type
+            </summary>
+            <param name="reader">The text reader</param>
+            <param name="skipLines">Tells the importer to skip a certain amount of lines at the beginning of a file.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.IDocumentFormatDefinition`1.Import(System.String,System.Int32)">
+            <summary>
+            Deserializes a string to a list of the desired type
+            </summary>
+            <param name="text">The text to import</param>
+            <param name="skipLines">Tells the importer to skip a certain amount of lines at the beginning of a file.</param>
+            <returns></returns>
+        </member>
+        <member name="P:AsciiImportExport.IDocumentFormatDefinition`1.ColumnSeparator">
+            <summary>
+            String that is used to separate columns in the text
+            </summary>
+        </member>
+        <member name="P:AsciiImportExport.IDocumentFormatDefinition`1.Columns">
+            <summary>
+            Enumerable list of columns of type <see cref="T:AsciiImportExport.IDocumentColumn`1"/> defining the structure of a document
+            </summary>
+        </member>
+        <member name="P:AsciiImportExport.IDocumentFormatDefinition`1.CommentString">
+            <summary>
+            String that is used to identify the start of comments in the text
+            </summary>
+        </member>
+        <member name="T:AsciiImportExport.IDocumentColumn`1">
+            <summary>
+            A column in a document
+            </summary>
+            <typeparam name="T">The type of the POCO you want to import/export</typeparam>
+        </member>
+        <member name="M:AsciiImportExport.IDocumentColumn`1.Format(System.String,System.Int32)">
+            <summary>
+            Returns the input string correctly padded to the specified length
+            </summary>
+            <param name="value">The input string</param>
+            <param name="columnWidth">The targeted length of the serialized string</param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.IDocumentColumn`1.Parse(`0,System.String)">
+            <summary>
+            Parses the input string to a value of type TRet and assigns the value to the property of the item object
+            </summary>
+            <param name="item">the item that the parsed value will be assigned to</param>
+            <param name="value">the input string</param>
+        </member>
+        <member name="M:AsciiImportExport.IDocumentColumn`1.Serialize(`0)">
+            <summary>
+            Serializes to string
+            </summary>
+            <param name="item">the item holding the data to be serialized</param>
+            <returns></returns>
+        </member>
+        <member name="P:AsciiImportExport.IDocumentColumn`1.Alignment">
+            <summary>
+            The alignment of the data in the column
+            </summary>
+        </member>
+        <member name="P:AsciiImportExport.IDocumentColumn`1.ColumnWidth">
+            <summary>
+            The fixed width of the column (-1 if not fixed)
+            </summary>
+        </member>
+        <member name="P:AsciiImportExport.IDocumentColumn`1.Header">
+            <summary>
+            The header of the column
+            </summary>
+        </member>
+        <member name="T:AsciiImportExport.DocumentColumnBuilder`2">
+            <summary>
+            Helps to build a column for a <see cref="T:AsciiImportExport.DocumentFormatDefinition`1"/>.
+            Best used together with <see cref="T:AsciiImportExport.DocumentFormatDefinitionBuilder`1"/>.
+            </summary>
+            <typeparam name="T">The type of the POCO you want to import/export</typeparam>
+            <typeparam name="TRet">The type of the columns data</typeparam>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.#ctor(System.Linq.Expressions.Expression{System.Func{`0,`1}})">
+            <summary>
+            The constructor
+            </summary>
+            <param name="expression">Lambda expression that evaluates the property of the POCO you want to import/export with this column</param>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.#ctor(System.Reflection.PropertyInfo)">
+            <summary>
+            The constructor
+            </summary>
+            <param name="propertyInfo">The property's PropertyInfo you want to import/export with this column</param>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.SetExportQuotedStrings(System.Boolean)">
+            <summary>
+            Defines if strings shall be written with enclosing quotes. Quotes contained in the string itself, get exported twice, to keep the information consistent. (Default = false)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.Build">
+            <summary>
+            Builds an initialized and ready to use instance of <see cref="T:AsciiImportExport.IDocumentColumn`1"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.SetAlignment(AsciiImportExport.ColumnAlignment)">
+            <summary>
+            Sets the alignment of the data in the column (Default = Left)
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.SetBooleanStrings(System.String,System.String)">
+            <summary>
+            Sets the string representations for boolean True and False (Default = T, F)
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.SetColumnWidth(System.Int32)">
+            <summary>
+            Sets a fixed width for the column (Default = -1 ... auto size)
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.SetDefaultValue(System.Func{`1})">
+            <summary>
+            Sets the default value of the column (Default = default(TRet))
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.SetExportFunc(System.Func{`0,`1,System.String})">
+            <summary>
+            Sets a custom export function that converts a value of type TRet to a string
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.SetFillChar(System.Char)">
+            <summary>
+            Sets the fill character to use for a column (Default = ' ')
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.SetFormatProvider(System.IFormatProvider)">
+            <summary>
+            Sets the format information of the column
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.SetHeader(System.String)">
+            <summary>
+            Sets the header of the column (Default = name of property)
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.SetImportFunc(System.Func{System.String,`1})">
+            <summary>
+            Sets a custom import function that converts a string to a value of type TRet
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentColumnBuilder`2.SetStringFormat(System.String)">
+            <summary>
+            Sets the string format used when exporting numerical data (Default = "0.0000")
+            </summary>
+        </member>
+        <member name="T:AsciiImportExport.DocumentFormatDefinitionBuilder`1">
+            <summary>
+            Helps to build a <see cref="T:AsciiImportExport.DocumentFormatDefinition`1"/>. Call Build() at the end of the method-chain.
+            </summary>
+            <typeparam name="T">The type of the POCO you want to import/export.</typeparam>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.#ctor(System.String,System.Boolean)">
+            <summary>
+            The constructor
+            </summary>
+            <param name="columnSeparator">String that is used to separate columns in the text</param>
+            <param name="autoSizeColumns">Defines if the rows of a column shall all be of the same width</param>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.AddColumn(System.Linq.Expressions.Expression{System.Func{`0,System.Nullable{System.Boolean}}},System.String,System.String,System.Action{AsciiImportExport.DocumentColumnBuilder{`0,System.Nullable{System.Boolean}}})">
+            <summary>
+            Adds a new column
+            </summary>
+            <param name="expression">Lambda expression that evaluates the property of the POCO you want to import/export with this column</param>
+            <param name="trueString">This string is used to represent the boolean value 'True'</param>
+            <param name="falseString">This string is used to represent the boolean value 'False'</param>
+            <param name="customization">Action that enables additionial customizations of the <see cref="T:AsciiImportExport.DocumentColumnBuilder`2"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.AddColumn(AsciiImportExport.IDocumentColumn{`0})">
+            <summary>
+            Adds a new column
+            </summary>
+            <param name="column">The column</param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.AddColumn``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Action{AsciiImportExport.DocumentColumnBuilder{`0,``0}})">
+            <summary>
+            Adds a new column
+            </summary>
+            <typeparam name="TRet">The type of the columns data</typeparam>
+            <param name="expression">Lambda expression that evaluates the property of the POCO you want to import/export with this column</param>
+            <param name="customization">Action that enables additionial customizations of the <see cref="T:AsciiImportExport.DocumentColumnBuilder`2"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.AddColumn``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String,System.Action{AsciiImportExport.DocumentColumnBuilder{`0,``0}})">
+            <summary>
+            Adds a new column
+            </summary>
+            <typeparam name="TRet">The type of the columns data</typeparam>
+            <param name="expression">Lambda expression that evaluates the property of the POCO you want to import/export with this column</param>
+            <param name="stringFormat">String format of the property</param>
+            <param name="customization">Action that enables additionial customizations of the <see cref="T:AsciiImportExport.DocumentColumnBuilder`2"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.AddColumn(System.Reflection.PropertyInfo,System.Action{AsciiImportExport.DocumentColumnBuilder{`0,System.Object}})">
+            <summary>
+            Adds a new column
+            </summary>
+            <param name="propertyInfo">The property's PropertyInfo you want to import/export with this column</param>
+            <param name="stringFormat">String format of the property</param>
+            <param name="customization">Action that enables additionial customizations of the <see cref="T:AsciiImportExport.DocumentColumnBuilder`2"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.AddColumn(System.Reflection.PropertyInfo,System.String,System.Action{AsciiImportExport.DocumentColumnBuilder{`0,System.Object}})">
+            <summary>
+            Adds a new column
+            </summary>
+            <param name="propertyInfo">The property's PropertyInfo you want to import/export with this column</param>
+            <param name="stringFormat">String format of the property</param>
+            <param name="customization">Action that enables additionial customizations of the <see cref="T:AsciiImportExport.DocumentColumnBuilder`2"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.AddDummyColumn(System.String)">
+            <summary>
+            Adds a column to the definition that acts as a place holder. Useful when you don't care about a column when importing data.
+            </summary>
+            <param name="exportValue">The value that will be exported</param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.AddDummyColumn(System.Int32)">
+            <summary>
+            Adds a column to the definition that acts as a place holder. Useful when you don't care about a column when importing data.
+            </summary>
+            <param name="columnWidth">The width of the dummy column</param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.AutoBuild(System.String,System.Boolean,System.String,System.Boolean,System.String)">
+            <summary>
+            Automatically builds a ready to use instance of <see cref="T:AsciiImportExport.DocumentFormatDefinition`1"/> with columns for all public propertys of the provided type/&gt;
+            </summary>
+            <param name="columnSeparator">String that is used to separate columns in the text</param>
+            <param name="autoSizeColumns">Defines if the rows of a column shall all be of the same width</param>
+            <param name="commentString">String that is used to identify the start of comments in the text (Default = No comments)</param>
+            <param name="exportHeaderLine">Defines if a header line shall be created during serialization (Default = false)</param>
+            <param name="headerLinePraefix">Optional praefix for the header line (Default = empty string)</param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.Build">
+            <summary>
+            Builds an initialized and ready to use instance of <see cref="T:AsciiImportExport.DocumentFormatDefinition`1"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.Build(System.Collections.Generic.List{System.Reflection.PropertyInfo},System.String,System.Boolean,System.String,System.Boolean,System.String)">
+            <summary>
+            Builds a ready to use instance of <see cref="T:AsciiImportExport.DocumentFormatDefinition`1"/> with columns for all properties in the provided property list /&gt;
+            </summary>
+            <param name="propertyList">List of properties to import / export</param>
+            <param name="columnSeparator">String that is used to separate columns in the text</param>
+            <param name="autoSizeColumns">Defines if the rows of a column shall all be of the same width</param>
+            <param name="commentString">String that is used to identify the start of comments in the text (Default = No comments)</param>
+            <param name="exportHeaderLine">Defines if a header line shall be created during serialization (Default = false)</param>
+            <param name="headerLinePraefix">Optional praefix for the header line (Default = empty string)</param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.SetCommentString(System.String)">
+            <summary>
+            String that is used to identify the start of comments in the text (Default = No comments)
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.SetExportHeaderLine(System.Boolean,System.String)">
+            <summary>
+            Defines if a header line shall be created during serialization (Default = false)
+            </summary>
+            <param name="exportHeaderLine">Defines if a header line shall be created during serialization (Default = false)</param>
+            <param name="headerLinePraefix">Optional praefix for the header line (Default = empty string)</param>
+            <returns></returns>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.SetInstantiator(System.Func{`0})">
+            <summary>
+            Function that creates a new instance of type <see cref="!:T"/>.
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.SetLineEndsWithColumnSeparator(System.Boolean)">
+            <summary>
+            Defines if during export each line shall be terminated with the column separator. (Default = false)
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.DocumentFormatDefinitionBuilder`1.SetTrimLineEnds(System.Boolean)">
+            <summary>
+            Defines if line endings get trimmed during export. (Default = true)
+            </summary>
+        </member>
+        <member name="T:AsciiImportExport.ImportException">
+            <summary>
+            This exception carries parsing error information
+            </summary>
+        </member>
+        <member name="M:AsciiImportExport.ImportException.#ctor(System.String,System.String,System.Exception,System.String)">
+            <summary>
+            The constructor
+            </summary>
+            <param name="columnName">The column where the error happend</param>
+            <param name="value">The value that caused the parsing error</param>
+            <param name="ex">The original exception</param>
+            <param name="message">Optional message</param>
+        </member>
+        <member name="P:AsciiImportExport.ImportException.ColumnName">
+            <summary>
+            The column where the error happend
+            </summary>
+        </member>
+        <member name="P:AsciiImportExport.ImportException.Value">
+            <summary>
+            The value that caused the parsing error
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:AsciiImportExport.Helpers" -->
+        <member name="T:AsciiImportExport.ServiceStackTextHelpers">
+            <summary>
+            Creates parsing and serializing functions for built-in types
+            A lot of this classes logic was copied and customized from the ServiceStack.Text project
+            </summary>
+            <typeparam name="TRet">The type of the columns data</typeparam>
+        </member>
+        <member name="M:AsciiImportExport.ServiceStackTextHelpers.GetParseFn(System.Type,System.String,System.String,System.IFormatProvider)">
+            <summary>
+            Returns a parsing function for built-in types
+            Copied from ServiceStack.Text and customized to meet demands of this project
+            </summary>
+            <param name="type"></param>
+            <param name="stringFormat">The string format used for DateTime parsing</param>
+            <param name="booleanTrue">The string that identifies a boolean true value</param>
+            <param name="provider"></param>
+        </member>
+        <member name="M:AsciiImportExport.ServiceStackTextHelpers.GetSerializeFunc(System.Type,System.String,System.String,System.String,System.IFormatProvider,System.Boolean)">
+            <summary>
+            Returns a parsing function for built-in types
+            Copied from ServiceStack.Text and customized to meet demands of this project
+            </summary>
+            <param name="stringFormat">The string format used for formatting of DateTime or numeric values</param>
+            <param name="booleanTrue">The string that identifies a boolean true value</param>
+            <param name="booleanFalse">The string that identifies a boolean false value</param>
+        </member>
+    </members>
+</doc>
