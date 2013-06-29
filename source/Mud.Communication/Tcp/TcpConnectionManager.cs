@@ -104,7 +104,6 @@
 
         private void MessageReceived(IConnection connection, string message)
         {
-            Console.WriteLine(message);
         }
 
         private void OnClientDisconnected(IConnection sender)

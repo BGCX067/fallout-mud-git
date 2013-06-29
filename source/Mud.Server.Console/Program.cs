@@ -14,7 +14,7 @@
             string input;
             while ((input = Console.ReadLine()) != "exit")
             {
-                server.Broadcast(input + "\n\r");
+                server.Broadcast("Admin mowi: " + input + "\n\r");
             }
 
             server.Stop();

@@ -58,6 +58,9 @@
     <Compile Include="ApplicationServices.cs" />
     <Compile Include="DumpToText\DumpToText.cs" />
     <Compile Include="MultiThreadObject.cs" />
+    <Compile Include="Parsing\AnsiBackgroundColor.cs" />
+    <Compile Include="Parsing\AnsiForegroundColor.cs" />
+    <Compile Include="Parsing\AsciiOutputParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +75,9 @@
       <Project>{abfa8f42-97ca-4189-9e20-db86654c3c40}</Project>
       <Name>Mud.Communication</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Session\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
