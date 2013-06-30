@@ -80,7 +80,6 @@
                 Socket socket = this.serverSocket.EndAccept(asyncResult);
                 var conn = new TcpConnection(socket);
                 conn.Disconnected += this.OnClientDisconnected;
-                conn.MessageReceived += this.MessageReceived;
                 conn.StartListen();
 
                 lock (this.lockVar)
@@ -100,10 +99,6 @@
                 // This exception was preventing the console from closing when the
                 // shutdown command was issued.
             }
-        }
-
-        private void MessageReceived(IConnection connection, string message)
-        {
         }
 
         private void OnClientDisconnected(IConnection sender)

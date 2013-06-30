@@ -8,21 +8,16 @@
     {
         private static void Main(string[] args)
         {
-            var server = ApplicationServices.ConnectionManager;
-            server.UserConnected += ServerUserConnected;
-            server.Start(4000);
+            log4net.Config.XmlConfigurator.Configure();
+            var server = new Server();
+            server.Run();
             string input;
             while ((input = Console.ReadLine()) != "exit")
             {
-                server.Broadcast("Admin mowi: " + input + "\n\r");
+                server.Broadcast("Admin mowi: " + input + Environment.NewLine);
             }
 
             server.Stop();
-        }
-
-        private static void ServerUserConnected(IConnection connection)
-        {
-            Console.WriteLine(connection.Ip.ToString());
         }
     }
 }

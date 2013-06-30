@@ -55,6 +55,7 @@
                     sb.Append(buf[0]);
                 }
             }
+
             return sb.ToString();
         }
 

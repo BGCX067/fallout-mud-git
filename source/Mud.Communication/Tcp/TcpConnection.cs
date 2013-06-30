@@ -5,6 +5,8 @@
     using System.Net.Sockets;
     using System.Text;
     using System.Threading;
+    using log4net;
+    using log4net.Core;
     using Mud.Abstractions.Communication;
 
     public class TcpConnection : IConnection
@@ -17,8 +19,11 @@
 
         private bool connected;
 
+        private ILog logger = LogManager.GetLogger(typeof(TcpConnection));
+
         public TcpConnection(Socket socket)
         {
+            this.Id = Guid.NewGuid();
             this.socket = socket;
             this.buffer = new byte[1];
             var remoteEndPoint = (IPEndPoint)socket.RemoteEndPoint;
@@ -33,6 +38,8 @@
         public event Action<IConnection> Disconnected;
 
         public IPAddress Ip { get; private set; }
+
+        public Guid Id { get; private set; }
 
         public void StartListen()
         {
@@ -112,9 +119,9 @@
             {
                 this.OnConnectionDisconnect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: log exception
+                this.logger.Error("Connection error", ex);
                 this.OnConnectionDisconnect();
             }
         }

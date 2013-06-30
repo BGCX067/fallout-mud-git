@@ -5,14 +5,5 @@
 
     public static class ApplicationServices
     {
-        private static IConnectionManager connectionManager;
-
-        public static IConnectionManager ConnectionManager
-        {
-            get
-            {
-                return connectionManager ?? (connectionManager = new TcpConnectionManager());
-            }
-        }
     }
 }

@@ -11,6 +11,8 @@
 
         IPAddress Ip { get; }
 
+        Guid Id { get; }
+
         void Disconnect();
 
         void Send(string message);

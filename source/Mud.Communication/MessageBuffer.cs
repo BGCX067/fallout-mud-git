@@ -3,6 +3,7 @@
     using System;
     using System.Text;
 
+    // TODO: make this class stateless and global for all connections + rename or make it a part of connection class
     public class MessageBuffer
     {
         public const string NewLineMarker = "\r";
