@@ -11,8 +11,6 @@
 
         public override void ProcessInput(UserSession session, string input)
         {
-            throw new Exception("Pindol test");
-
             if (input.ToLower() == "new")
             {
                 session.WriteToUser("Functionality not implemented..." + Environment.NewLine, false);

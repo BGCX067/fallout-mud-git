@@ -1,7 +1,6 @@
 ﻿namespace Mud.Server.Console
 {
     using System;
-    using Mud.Abstractions.Communication;
     using Mud.Core;
 
     public class Program
@@ -14,7 +13,7 @@
             string input;
             while ((input = Console.ReadLine()) != "exit")
             {
-                server.Broadcast("Admin mowi: " + input + Environment.NewLine);
+                server.Broadcast("Admin says: " + input + Environment.NewLine);
             }
 
             server.Stop();
