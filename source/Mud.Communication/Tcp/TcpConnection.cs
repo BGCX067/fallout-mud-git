@@ -5,6 +5,9 @@
     using System.Net.Sockets;
     using System.Text;
     using System.Threading;
+
+    using Mud.Abstractions.Extensions;
+
     using log4net;
     using log4net.Core;
     using Mud.Abstractions.Communication;
@@ -121,7 +124,13 @@
             }
             catch (Exception ex)
             {
-                this.logger.Error("Connection error", ex);
+                var socketEx = ex.CastTo<SocketException>();
+                var connectionReset = socketEx != null && socketEx.SocketErrorCode == SocketError.ConnectionReset;
+                if (!connectionReset)
+                {
+                    this.logger.Error("Connection error", ex);
+                }
+
                 this.OnConnectionDisconnect();
             }
         }
