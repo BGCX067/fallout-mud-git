@@ -7,16 +7,11 @@
 
     using Mud.Core;
 
-    public class Thing : MultiThreadObject
+    public abstract class Thing : MultiThreadObject
     {
-        private readonly List<Thing> childs;
+        private readonly List<Thing> childs = new List<Thing>();
 
         private Thing parent;
-
-        public Thing()
-        {
-            this.childs = new List<Thing>();
-        }
 
         public IEnumerable<Thing> Childs
         {

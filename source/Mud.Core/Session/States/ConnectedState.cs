@@ -17,8 +17,6 @@
                 session.WriteToUser("Disconnecting..." + Environment.NewLine, false);
                 session.Connection.Disconnect();
             }
-
-            session.WriteToUser(session.Connection.Ip.ToString());
         }
     }
 }
