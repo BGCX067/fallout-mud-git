@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Mud.Domain.Abstraction;
-using Mud.Domain.Delegates;
-using Mud.Domain.EventData;
-using Mud.Domain.Session.Context;
-using Mud.Domain.Output;
-using StructureMap;
-
-namespace Mud.Domain.Session
+﻿namespace Mud.Domain.Session
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Mud.Domain.Abstraction;
+    using Mud.Domain.Delegates;
+    using Mud.Domain.EventData;
+    using Mud.Domain.Session.Context;
+    using Mud.Domain.Output;
+    using StructureMap;
+
     public class Session : IController
     {
         private IConnection _connection;
+
         private SessionContext _context;
+
         private IOutputParser _outputParser;
 
         public event SessionTerminatedEventHandler OnSessionTerminate;
