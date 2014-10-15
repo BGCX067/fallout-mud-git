@@ -7,7 +7,10 @@
 
     public class Location
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public IDictionary<Direction, Passage> Exits { get; private set; } 
+
+        public string Title { get; private set; }
+
+        public string Description { get; private set; }
     }
 }
